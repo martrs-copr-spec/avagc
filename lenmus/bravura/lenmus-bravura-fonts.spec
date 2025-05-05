@@ -45,9 +45,9 @@ Source10: 60-%{fontpkgname}.conf
 %fontfiles
 
 %changelog
-* Sat May  3 2025 Martin RS - 1.398
+* Sat May  3 2025 Martin RS - 1.392
 - update to build in copr
-* Mon Feb 20 2023 Martin RS - 1.394
+* Mon Feb 20 2023 Martin RS - 1.392
 - update version
 * Sat Nov 13 2021 Martin RS - 1.18
 - update packaging using fonts-rpm-templates
