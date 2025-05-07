@@ -20,7 +20,6 @@ Requires:	dcmtk >= 3.6.0
 Requires:       gtk2 >= 2.16
 Requires:	gnome-vfs2
 Requires:	libgnomecanvas
-Requires:       openh264
 
 BuildRequires:  autoconf automake libtool gcc-c++ glibc-devel intltool desktop-file-utils
 BuildRequires:  xmedcon-devel
@@ -36,7 +35,7 @@ BuildRequires:  glib2-devel
 BuildRequires:  gtk2-devel >= 2.10
 BuildRequires:  gtk-doc
 BuildRequires:	gnome-vfs2-devel
-BuildRequires:	openh264
+BuildRequires:	openh264-devel
 
 %description 
 
