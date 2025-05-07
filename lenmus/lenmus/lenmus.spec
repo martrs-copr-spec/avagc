@@ -24,7 +24,7 @@ BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
 BuildRequires:  intltool
 BuildRequires:  libtool
-#BuildRequires:  lomse-devel
+BuildRequires:  lomse-devel
 BuildRequires:  make
 BuildRequires:  portmidi-devel
 BuildRequires:  sqlite-devel
@@ -47,7 +47,7 @@ The different activities can be customized to meet your needs.
 It includes an score editor.
 
 %prep
-%setup -q %{name}-%{_gitcommit}
+%setup -q -n %{name}-%{_gitcommit}
 sed -i -e 's|-Wall|-Wall -fPIC -fpermissive|' -e '272s|^#set|set|' -e 's|wx-config|wx-config-3.0|' CMakeLists.txt
 sed -i CMakeLists.txt -e 's|fonts/truetype|fonts/lenmus-bravura-fonts|'
 
