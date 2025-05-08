@@ -1,5 +1,3 @@
-%global debug_package %{nil}
-
 %global _gitcommit 39d43901ce27d0cc53b5a4eb277a65082e9906f0
 %global _gitdate 20250131
 
