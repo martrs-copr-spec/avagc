@@ -1,0 +1,46 @@
+--- OLD/pulseaudio_dlna/application.py	2022-12-29 00:58:31.000000000 -0800
++++ NEW/pulseaudio_dlna/application.py	2025-05-10 13:39:36.036199549 -0700
+@@ -44,6 +44,7 @@
+ 
+ class Application(object):
+ 
++    ENCODING = 'utf-8'
+     DEVICE_CONFIG_PATHS = [
+         os.path.expanduser('~/.local/share/pulseaudio-dlna'),
+         '/etc/pulseaudio-dlna',
+@@ -300,7 +301,7 @@
+                 return obj.__dict__
+ 
+         def obj_to_dict(obj):
+-            json_text = json.dumps(obj, default=device_filter)
++            json_text = json.dumps(obj, default=device_filter, ensure_ascii=False)
+             return json.loads(json_text)
+ 
+         if update:
+@@ -316,7 +317,7 @@
+                 sys.exit(1)
+         else:
+             new_config = obj_to_dict(holder.devices)
+-        json_text = json.dumps(new_config, indent=4)
++        json_text = json.dumps(new_config, indent=4, ensure_ascii=False)
+ 
+         for config_path in reversed(self.DEVICE_CONFIG_PATHS):
+             config_file = os.path.join(config_path, self.DEVICE_CONFIG)
+@@ -326,7 +327,7 @@
+                 except (OSError, IOError):
+                     continue
+             try:
+-                with open(config_file, 'w') as h:
++                with open(config_file, 'w', encoding=self.ENCODING) as h:
+                     h.write(json_text)
+                     logger.info('Found the following devices:')
+                     for device in list(holder.devices.values()):
+@@ -351,7 +352,7 @@
+             config_file = os.path.join(config_path, self.DEVICE_CONFIG)
+             if os.path.isfile(config_file) and \
+                os.access(config_file, os.R_OK):
+-                with open(config_file, 'r') as h:
++                with open(config_file, 'r', encoding=self.ENCODING) as h:
+                     json_text = h.read()
+                     logger.debug('Device configuration:\n{}'.format(json_text))
+                     json_text = json_text.replace('\n', '')
