@@ -92,9 +92,9 @@ update-desktop-database %{_datadir}/applications
 
 
 %changelog
-* Wed May  7 2025 Martin RS - 1.0.6git20231008                                  
-- update                                                                        
-* Sat Sep  3 2022 Martin RS - 1.0.6git20220709                                  
+* Wed May  7 2025 Martin RS - 1.0.6git20231008
+- update
+* Sat Sep  3 2022 Martin RS - 1.0.6git20220709
 - update
 * Sun Mar 23 2021 Martin RS - 1.0.6
 - update for Fedora
