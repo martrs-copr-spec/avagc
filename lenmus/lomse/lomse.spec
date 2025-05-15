@@ -71,7 +71,7 @@ install -m755 */lib%{name}.a %{buildroot}%{_libdir}
 %{_libdir}/pkgconfig/lib%{name}.pc
 
 %changelog
-* Tue May  5 2025 Martin RS - 0.30.0git20241022
+* Mon May  5 2025 Martin RS - 0.30.0git20241022
 - update
 * Mon Feb 20 2023 Martin RS - 0.30.0git20221227
 - update
