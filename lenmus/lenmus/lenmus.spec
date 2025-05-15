@@ -47,7 +47,7 @@ The different activities can be customized to meet your needs.
 It includes an score editor.
 
 %prep
-%setup -q -n %{name}-%{_gitcommit}
+%autosetup -n %{name}-%{_gitcommit}
 sed -i -e 's|-Wall|-Wall -fPIC -fpermissive|' -e '272s|^#set|set|' -e 's|wx-config|wx-config-3.0|' CMakeLists.txt
 sed -i CMakeLists.txt -e 's|fonts/truetype|fonts/lenmus-bravura-fonts|'
 
