@@ -1,7 +1,6 @@
 Version: 1.392
 Release: 2%{?dist}
 URL:     https://github.com/lenmus/bravura/
-%global  _disable_source_fetch 0
 
 %global foundry           lenmus
 %global fontlicense       SIL-OFL-1.1
@@ -25,13 +24,13 @@ in Unicode’s Basic Multilingual Plane for a single (format-independent)
 font.
 }
 
-Source0:  https://github.com/lenmus/bravura/archive/refs/tags/%{version}-0.tar.gz
+Source0:  https://github.com/lenmus/bravura/archive/refs/tags/%{version}-0.tar.gz#/%{name}-%{version}.tar.gz
 Source10: 60-%{fontpkgname}.conf
 
 %fontpkg
 
 %prep
-%setup -n %{fontfamily}-%{version}-0
+%autosetup -n %{fontfamily}-%{version}-0
 
 %build
 %fontbuild
