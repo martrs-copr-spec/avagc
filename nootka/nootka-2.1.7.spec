@@ -1,5 +1,5 @@
-%global _gitcommit d259625c37aee1f44f3d744fd8c7349dca91c765
-%global _gitdate 20250406
+%global _gitcommit d97990cc4de3e765e3336db69b332b8002d489ed
+%global _gitdate 20250818
 
 Name:           nootka
 Version:        2.1.7_0git%{_gitdate}
@@ -71,6 +71,8 @@ rm -rf %{buildroot}%{_docdir}
 %{_datadir}/metainfo/*
 
 %changelog
+* Sun May 24 2026 Martin RS - 2.1.7_0git20250818
+- update
 * Wed May  7 2025 Martin RS - 2.1.7_0git20250406
 - update
 * Sun Apr 2 2023 Wei-Lun Chao <bluebat@member.fsf.org> - 2.0.2
