@@ -1,5 +1,5 @@
-%global _gitcommit cc250ca4ce9a90d8dddb0fc359c5a80609cdafcb
-%global _gitdate 20250429
+%global _gitcommit 113787fe4d755e7e406b5ea4bd2cfb9eae0e56a3
+%global _gitdate 20250915
 
 %undefine _debugsource_packages
 
@@ -70,6 +70,8 @@ sed -i CMakeLists.txt -e 's|fonts/truetype|fonts/lenmus-bravura-fonts|'
 %{_mandir}/man1/%{name}*
 
 %changelog
+* Fri Jun  5 2026 Martin RS - 6.0.1git20250915
+- update
 * Tue May  5 2025 Martin RS - 6.0.1git20250429
 - update
 * Fri Sep 30 2022 Martin RS - 6.0.1
