@@ -42,6 +42,7 @@ Development files for the package lomse.
 
 %build
 %cmake -G "Unix Makefiles" -DLOMSE_BUILD_STATIC_LIB=ON \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_BUILD_TYPE=Release -DFREETYPE_INCLUDE_DIRS=%{_includedir}/freetype2
 %cmake_build
 
