@@ -11,6 +11,7 @@ URL: 		https://amide.sourceforge.net
 Source0: 	https://github.com/ferdymercury/amide/archive/%{_gitcommit}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Packager: 	Andy Loening <loening at alum dot mit dot edu>
+Patch0:         %{name}-calculation-ffmpeg.patch
 
 Requires:	xmedcon >= 0.10.0
 Requires:	gsl
@@ -47,7 +48,7 @@ alignments.
 
 
 %prep
-%setup -q -n %{name}-%{_gitcommit}
+%autosetup -p1 -n %{name}-%{_gitcommit}
 
 %build
 intltoolize; libtoolize; gtkdocize; gnome-doc-prepare
@@ -92,6 +93,8 @@ update-desktop-database %{_datadir}/applications
 
 
 %changelog
+* Sat Jun 13 2026 Martin RS - 1.0.6git20231008
+- patch calculation declaration for Fedora 44
 * Wed May  7 2025 Martin RS - 1.0.6git20231008
 - update
 * Sat Sep  3 2022 Martin RS - 1.0.6git20220709

@@ -1,0 +1,78 @@
+diff -ruN amide.orig/src/amitk_roi.c amide/src/amitk_roi.c
+--- amide.orig/src/amitk_roi.c	2023-10-08 23:45:55.000000000 -0700
++++ amide/src/amitk_roi.c	2026-06-13 08:28:35.071057174 -0700
+@@ -755,7 +755,7 @@
+ 				     const guint gate,
+ 				     const gboolean inverse,
+ 				     const gboolean accurate,
+-				     void (*calculation)(),
++				     void (*calculation)(AmitkVoxel, amide_data_t, amide_real_t, gpointer),
+ 				     gpointer data) {
+ 
+   g_return_if_fail(AMITK_IS_ROI(roi));
+diff -ruN amide.orig/src/amitk_roi.h amide/src/amitk_roi.h
+--- amide.orig/src/amitk_roi.h	2023-10-08 23:45:55.000000000 -0700
++++ amide/src/amitk_roi.h	2026-06-13 08:29:34.566093983 -0700
+@@ -152,7 +152,7 @@
+ 						   const guint gate,
+ 						   const gboolean inverse,
+ 						   const gboolean accurate,
+-						   void (* calculation)(),
++						   void (* calculation)(AmitkVoxel, amide_data_t, amide_real_t, gpointer),
+ 						   gpointer data);
+ void            amitk_roi_erase_volume            (const AmitkRoi * roi, 
+ 						   AmitkDataSet * ds,
+diff -ruN amide.orig/src/amitk_roi_variable_type.c amide/src/amitk_roi_variable_type.c
+--- amide.orig/src/amitk_roi_variable_type.c	2023-10-08 23:45:55.000000000 -0700
++++ amide/src/amitk_roi_variable_type.c	2026-06-13 08:30:36.681126829 -0700
+@@ -820,7 +820,7 @@
+ 							       const guint frame,
+ 							       const guint gate,
+ 							       const gboolean inverse,
+-							       void (* calculation)(),
++							       void (* calculation)(AmitkVoxel, amide_data_t, amide_real_t, gpointer),
+ 							       gpointer data) {
+ 
+   AmitkPoint roi_pt_corner, roi_pt_center, fine_roi_pt;
+@@ -1069,7 +1069,7 @@
+ 								   const guint frame,
+ 								   const guint gate,
+ 								   const gboolean inverse,
+-								   void (* calculation)(),
++								   void (* calculation)(AmitkVoxel, amide_data_t, amide_real_t, gpointer),
+ 								   gpointer data) {
+ 
+   AmitkPoint fine_roi_pt, fine_ds_pt;
+diff -ruN amide.orig/src/amitk_roi_variable_type.h amide/src/amitk_roi_variable_type.h
+--- amide.orig/src/amitk_roi_variable_type.h	2023-10-08 23:45:55.000000000 -0700
++++ amide/src/amitk_roi_variable_type.h	2026-06-13 08:31:31.637151828 -0700
+@@ -64,14 +64,14 @@
+ 							       const guint frame,
+ 							       const guint gate,
+ 							       const gboolean inverse,
+-							       void (*calculation)(),
++							       void (*calculation)(AmitkVoxel, amide_data_t, amide_real_t, gpointer),
+ 							       gpointer data);
+ void amitk_roi_`'m4_Variable_Type`'_calculate_on_data_set_accurate(const AmitkRoi * roi,  
+ 								   const AmitkDataSet * ds, 
+ 								   const guint frame,
+ 								   const guint gate,
+ 								   const gboolean inverse,
+-								   void (*calculation)(),
++								   void (*calculation)(AmitkVoxel, amide_data_t, amide_real_t, gpointer),
+ 								   gpointer data);
+ 
+ 
+diff -ruN amide.orig/src/mpeg_encode.c amide/src/mpeg_encode.c
+--- amide.orig/src/mpeg_encode.c	2023-10-08 23:45:55.000000000 -0700
++++ amide/src/mpeg_encode.c	2026-06-13 08:54:57.554421848 -0700
+@@ -164,8 +164,7 @@
+     return encode;
+ 
+   if (encode->context != NULL) {
+-    avcodec_close(encode->context);
+-    av_free(encode->context);
++    avcodec_free_context(&encode->context);
+     encode->context = NULL;
+   }
+ 
